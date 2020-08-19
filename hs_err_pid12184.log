@@ -1,0 +1,751 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 754416 bytes for Chunk::new
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (allocation.cpp:389), pid=12184, tid=0x0000000000000cc8
+#
+# JRE version: OpenJDK Runtime Environment (8.0_252-b09) (build 1.8.0_252-b09)
+# Java VM: OpenJDK 64-Bit Server VM (25.252-b09 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000000017ff9000):  JavaThread "C2 CompilerThread1" daemon [_thread_in_native, id=3272, stack(0x0000000018fc0000,0x00000000190c0000)]
+
+Stack: [0x0000000018fc0000,0x00000000190c0000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+
+Current CompileTask:
+C2:  53460 1339       4       sun.security.ec.ECOperations::setDouble (559 bytes)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x000000001808b000 JavaThread "Service Thread" daemon [_thread_blocked, id=16544, stack(0x00000000191c0000,0x00000000192c0000)]
+  0x0000000018008000 JavaThread "C1 CompilerThread2" daemon [_thread_blocked, id=1228, stack(0x00000000190c0000,0x00000000191c0000)]
+=>0x0000000017ff9000 JavaThread "C2 CompilerThread1" daemon [_thread_in_native, id=3272, stack(0x0000000018fc0000,0x00000000190c0000)]
+  0x0000000017fa9000 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=4500, stack(0x0000000018ec0000,0x0000000018fc0000)]
+  0x0000000017fa7800 JavaThread "Attach Listener" daemon [_thread_blocked, id=11660, stack(0x0000000018dc0000,0x0000000018ec0000)]
+  0x0000000017ff6000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=16832, stack(0x0000000018cc0000,0x0000000018dc0000)]
+  0x00000000174ca800 JavaThread "Finalizer" daemon [_thread_blocked, id=6132, stack(0x0000000018ac0000,0x0000000018bc0000)]
+  0x00000000174c4800 JavaThread "Reference Handler" daemon [_thread_blocked, id=12132, stack(0x00000000189c0000,0x0000000018ac0000)]
+  0x00000000028c7800 JavaThread "main" [_thread_in_native, id=16648, stack(0x00000000026e0000,0x00000000027e0000)]
+
+Other Threads:
+  0x0000000017f91800 VMThread [stack: 0x00000000188c0000,0x00000000189c0000] [id=13432]
+  0x0000000018091000 WatcherThread [stack: 0x00000000192c0000,0x00000000193c0000] [id=696]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+heap address: 0x0000000082000000, size: 2016 MB, Compressed Oops mode: 32-bit
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 3
+Compressed class space size: 1073741824 Address: 0x0000000100000000
+
+Heap:
+ PSYoungGen      total 37888K, used 10526K [0x00000000d6000000, 0x00000000d8a00000, 0x0000000100000000)
+  eden space 32768K, 16% used [0x00000000d6000000,0x00000000d654e370,0x00000000d8000000)
+  from space 5120K, 99% used [0x00000000d8000000,0x00000000d84f94b0,0x00000000d8500000)
+  to   space 5120K, 0% used [0x00000000d8500000,0x00000000d8500000,0x00000000d8a00000)
+ ParOldGen       total 86016K, used 1862K [0x0000000082000000, 0x0000000087400000, 0x00000000d6000000)
+  object space 86016K, 2% used [0x0000000082000000,0x00000000821d1af0,0x0000000087400000)
+ Metaspace       used 15905K, capacity 16114K, committed 16384K, reserved 1064960K
+  class space    used 1707K, capacity 1785K, committed 1792K, reserved 1048576K
+
+Card table byte_map: [0x0000000011d40000,0x0000000012140000] byte_map_base: 0x0000000011930000
+
+Marking Bits: (ParMarkBitMap*) 0x0000000072e8fe90
+ Begin Bits: [0x00000000127e0000, 0x0000000014760000)
+ End Bits:   [0x0000000014760000, 0x00000000166e0000)
+
+Polling page: 0x0000000000f10000
+
+CodeCache: size=245760Kb used=4550Kb max_used=4550Kb free=241209Kb
+ bounds [0x0000000002980000, 0x0000000002e00000, 0x0000000011980000]
+ total_blobs=1777 nmethods=1345 adapters=345
+ compilation: enabled
+
+Compilation events (250 events):
+Event: 42.565 Thread 0x0000000018008000 nmethod 1217 0x0000000002da6bd0 code [0x0000000002da6d40, 0x0000000002da6ee8]
+Event: 42.589 Thread 0x0000000018008000 1219       3       com.sun.crypto.provider.AESCrypt::encryptBlock (10 bytes)
+Event: 42.590 Thread 0x0000000018008000 nmethod 1219 0x0000000002da6810 code [0x0000000002da6980, 0x0000000002da6b08]
+Event: 42.590 Thread 0x0000000018008000 1221       3       java.lang.String$CaseInsensitiveComparator::compare (111 bytes)
+Event: 42.594 Thread 0x0000000018008000 nmethod 1221 0x0000000002da89d0 code [0x0000000002da8c60, 0x0000000002da9cf8]
+Event: 42.594 Thread 0x0000000018008000 1220       3       com.sun.crypto.provider.GHASH::processBlock (31 bytes)
+Event: 42.594 Thread 0x0000000018008000 nmethod 1220 0x0000000002da6290 code [0x0000000002da6420, 0x0000000002da6688]
+Event: 42.661 Thread 0x0000000018008000 1222       3       com.sun.crypto.provider.GaloisCounterMode::increment32 (49 bytes)
+Event: 42.662 Thread 0x0000000017fa9000 1223       4       java.lang.Character::isWhitespace (5 bytes)
+Event: 42.662 Thread 0x0000000018008000 nmethod 1222 0x0000000002da5c10 code [0x0000000002da5da0, 0x0000000002da6108]
+Event: 42.662 Thread 0x0000000018008000 1224       3       java.util.Calendar::internalSet (8 bytes)
+Event: 42.663 Thread 0x0000000018008000 nmethod 1224 0x0000000002da5850 code [0x0000000002da59a0, 0x0000000002da5b10]
+Event: 42.663 Thread 0x0000000018008000 1225   !   3       java.util.Collections$SynchronizedMap::put (28 bytes)
+Event: 42.664 Thread 0x0000000018008000 nmethod 1225 0x0000000002da51d0 code [0x0000000002da5340, 0x0000000002da56e8]
+Event: 42.664 Thread 0x0000000018008000 1226       3       java.util.Arrays::fill (21 bytes)
+Event: 42.665 Thread 0x0000000018008000 nmethod 1226 0x0000000002daa810 code [0x0000000002daa980, 0x0000000002daab70]
+Event: 42.665 Thread 0x0000000017fa9000 nmethod 1223 0x0000000002da4f10 code [0x0000000002da5040, 0x0000000002da50d8]
+Event: 42.682 Thread 0x0000000018008000 1227   !   3       org.postgresql.core.VisibleBufferedInputStream::read (222 bytes)
+Event: 42.686 Thread 0x0000000018008000 nmethod 1227 0x0000000002daca90 code [0x0000000002dacc80, 0x0000000002dad5e8]
+Event: 42.722 Thread 0x0000000018008000 1228       3       java.lang.String::endsWith (17 bytes)
+Event: 42.723 Thread 0x0000000018008000 nmethod 1228 0x0000000002dac5d0 code [0x0000000002dac740, 0x0000000002dac968]
+Event: 42.723 Thread 0x0000000018008000 1229       3       java.lang.Class::getConstructor (16 bytes)
+Event: 42.724 Thread 0x0000000018008000 nmethod 1229 0x0000000002dac150 code [0x0000000002dac2e0, 0x0000000002dac4e8]
+Event: 42.724 Thread 0x0000000018008000 1231       3       sun.security.ssl.CipherSuite::isAvailable (33 bytes)
+Event: 42.725 Thread 0x0000000018008000 nmethod 1231 0x0000000002dabb90 code [0x0000000002dabd00, 0x0000000002dac088]
+Event: 42.725 Thread 0x0000000018008000 1232       3       java.util.RegularEnumSet::add (9 bytes)
+Event: 42.725 Thread 0x0000000017fa9000 1236       4       sun.security.util.AbstractAlgorithmConstraints::checkAlgorithm (138 bytes)
+Event: 42.726 Thread 0x0000000018008000 nmethod 1232 0x0000000002dab6d0 code [0x0000000002dab840, 0x0000000002dabac8]
+Event: 42.726 Thread 0x0000000018008000 1235       3       java.lang.Enum::getDeclaringClass (22 bytes)
+Event: 42.727 Thread 0x0000000018008000 nmethod 1235 0x0000000002dab190 code [0x0000000002dab300, 0x0000000002dab608]
+Event: 42.727 Thread 0x0000000018008000 1233       3       java.util.RegularEnumSet::add (40 bytes)
+Event: 42.728 Thread 0x0000000018008000 nmethod 1233 0x0000000002dad910 code [0x0000000002dada80, 0x0000000002dadda8]
+Event: 42.728 Thread 0x0000000018008000 1237       3       java.util.ArrayList$SubList$1::<init> (47 bytes)
+Event: 42.729 Thread 0x0000000018008000 nmethod 1237 0x0000000002daac50 code [0x0000000002daadc0, 0x0000000002daafb0]
+Event: 42.729 Thread 0x0000000018008000 1234       3       java.util.EnumSet::typeCheck (59 bytes)
+Event: 42.732 Thread 0x0000000018008000 nmethod 1234 0x0000000002dade90 code [0x0000000002dae0e0, 0x0000000002daeff8]
+Event: 42.732 Thread 0x0000000018008000 1230       3       java.util.TreeSet::iterator (15 bytes)
+Event: 42.733 Thread 0x0000000018008000 nmethod 1230 0x0000000002daf690 code [0x0000000002daf800, 0x0000000002dafad8]
+Event: 42.754 Thread 0x0000000018008000 1238       3       sun.reflect.ByteVectorImpl::get (26 bytes)
+Event: 42.754 Thread 0x0000000017ff9000 1239       4       sun.reflect.ByteVectorImpl::add (38 bytes)
+Event: 42.756 Thread 0x0000000018008000 nmethod 1238 0x0000000002dafbd0 code [0x0000000002dafd40, 0x0000000002daff68]
+Event: 42.760 Thread 0x0000000017ff9000 nmethod 1239 0x0000000002db2d90 code [0x0000000002db2ee0, 0x0000000002db2fc8]
+Event: 42.764 Thread 0x0000000018008000 1240       3       sun.security.provider.SHA5::implCompress (13 bytes)
+Event: 42.765 Thread 0x0000000018008000 nmethod 1240 0x0000000002db2690 code [0x0000000002db2820, 0x0000000002db2ba8]
+Event: 42.765 Thread 0x0000000018008000 1241       3       sun.security.provider.SHA5::implCompressCheck (15 bytes)
+Event: 42.765 Thread 0x0000000018008000 nmethod 1241 0x0000000002db20d0 code [0x0000000002db2260, 0x0000000002db2538]
+Event: 42.767 Thread 0x0000000018008000 1242       3       java.math.BigInteger::valueOf (62 bytes)
+Event: 42.768 Thread 0x0000000018008000 nmethod 1242 0x0000000002db1a10 code [0x0000000002db1ba0, 0x0000000002db1f68]
+Event: 42.768 Thread 0x0000000018008000 1244       3       java.math.BigInteger::shiftRightImpl (290 bytes)
+Event: 42.769 Thread 0x0000000018008000 nmethod 1244 0x0000000002db04d0 code [0x0000000002db06e0, 0x0000000002db1348]
+Event: 42.769 Thread 0x0000000018008000 1243       3       java.math.BigInteger::shiftRight (48 bytes)
+Event: 42.770 Thread 0x0000000018008000 nmethod 1243 0x0000000002db30d0 code [0x0000000002db3260, 0x0000000002db35a8]
+Event: 42.770 Thread 0x0000000018008000 1245       3       java.math.MutableBigInteger::<init> (22 bytes)
+Event: 42.771 Thread 0x0000000018008000 nmethod 1245 0x0000000002db3690 code [0x0000000002db3800, 0x0000000002db3a70]
+Event: 42.771 Thread 0x0000000018008000 1246       3       java.lang.Integer::compare (20 bytes)
+Event: 42.771 Thread 0x0000000018008000 nmethod 1246 0x0000000002db0090 code [0x0000000002db0200, 0x0000000002db03f0]
+Event: 42.771 Thread 0x0000000018008000 1247       3       java.lang.Integer::compareTo (9 bytes)
+Event: 42.771 Thread 0x0000000018008000 nmethod 1247 0x0000000002db3f50 code [0x0000000002db40c0, 0x0000000002db44f0]
+Event: 42.772 Thread 0x0000000018008000 1248       3       sun.reflect.NativeConstructorAccessorImpl::newInstance (89 bytes)
+Event: 42.774 Thread 0x0000000018008000 nmethod 1248 0x0000000002db4610 code [0x0000000002db4880, 0x0000000002db5bb8]
+Event: 42.774 Thread 0x0000000018008000 1252       3       java.math.MutableBigInteger::divideKnuth (8 bytes)
+Event: 42.774 Thread 0x0000000018008000 nmethod 1252 0x0000000002db63d0 code [0x0000000002db6540, 0x0000000002db66e8]
+Event: 42.774 Thread 0x0000000018008000 1253       3       java.math.MutableBigInteger::toBigInteger (28 bytes)
+Event: 42.774 Thread 0x0000000018008000 nmethod 1253 0x0000000002db6790 code [0x0000000002db6900, 0x0000000002db6bb8]
+Event: 42.774 Thread 0x0000000018008000 1250       3       java.math.MutableBigInteger::divideKnuth (272 bytes)
+Event: 42.776 Thread 0x0000000018008000 nmethod 1250 0x0000000002db6c90 code [0x0000000002db6fa0, 0x0000000002db8338]
+Event: 42.776 Thread 0x0000000018008000 1255       3       java.math.BigInteger::remainderKnuth (48 bytes)
+Event: 42.777 Thread 0x0000000018008000 nmethod 1255 0x0000000002db8d90 code [0x0000000002db8f80, 0x0000000002db9768]
+Event: 42.777 Thread 0x0000000018008000 1251       3       java.math.MutableBigInteger::compare (106 bytes)
+Event: 42.778 Thread 0x0000000018008000 nmethod 1251 0x0000000002db9c10 code [0x0000000002db9da0, 0x0000000002dba150]
+Event: 42.778 Thread 0x0000000018008000 1254       3       java.math.MutableBigInteger::getMagnitudeArray (45 bytes)
+Event: 42.778 Thread 0x0000000018008000 nmethod 1254 0x0000000002dba350 code [0x0000000002dba4c0, 0x0000000002dba6e8]
+Event: 42.780 Thread 0x0000000018008000 1257       3       java.io.ByteArrayOutputStream::<init> (43 bytes)
+Event: 42.781 Thread 0x0000000018008000 nmethod 1257 0x0000000002dbab10 code [0x0000000002dbad00, 0x0000000002dbb678]
+Event: 42.800 Thread 0x0000000017ff9000 1258       4       java.util.regex.Matcher::reset (83 bytes)
+Event: 42.800 Thread 0x0000000018008000 1259       3       java.lang.Math::addExact (26 bytes)
+Event: 42.800 Thread 0x0000000018008000 nmethod 1259 0x0000000002dbba90 code [0x0000000002dbbc00, 0x0000000002dbbe48]
+Event: 42.803 Thread 0x0000000017ff9000 nmethod 1258 0x0000000002dbecd0 code [0x0000000002dbee20, 0x0000000002dbefe8]
+Event: 42.806 Thread 0x0000000017fa9000 nmethod 1236 0x0000000002dc3050 code [0x0000000002dc3280, 0x0000000002dc5968]
+Event: 42.888 Thread 0x0000000018008000 1260       3       com.sun.crypto.provider.GCTR::update (158 bytes)
+Event: 42.892 Thread 0x0000000018008000 nmethod 1260 0x0000000002dbdd50 code [0x0000000002dbdf40, 0x0000000002dbe7a8]
+Event: 42.892 Thread 0x0000000018008000 1262       3       java.nio.charset.CharsetEncoder::reset (11 bytes)
+Event: 42.893 Thread 0x0000000018008000 nmethod 1262 0x0000000002dbd910 code [0x0000000002dbda60, 0x0000000002dbdc90]
+Event: 42.893 Thread 0x0000000018008000 1263       3       java.nio.charset.CharsetEncoder::implReset (1 bytes)
+Event: 42.893 Thread 0x0000000018008000 nmethod 1263 0x0000000002dbd610 code [0x0000000002dbd760, 0x0000000002dbd8b0]
+Event: 42.893 Thread 0x0000000018008000 1261       3       java.util.Properties::getProperty (16 bytes)
+Event: 42.894 Thread 0x0000000018008000 nmethod 1261 0x0000000002dbd190 code [0x0000000002dbd300, 0x0000000002dbd568]
+Event: 42.913 Thread 0x0000000017ff9000 1264 %     4       com.sun.crypto.provider.GHASH::blockMult @ 121 (245 bytes)
+Event: 42.913 Thread 0x0000000018008000 1265       1       org.postgresql.core.VisibleBufferedInputStream::getBuffer (5 bytes)
+Event: 42.914 Thread 0x0000000018008000 nmethod 1265 0x0000000002dbced0 code [0x0000000002dbd020, 0x0000000002dbd130]
+Event: 42.914 Thread 0x0000000018008000 1266       1       org.postgresql.core.VisibleBufferedInputStream::getIndex (5 bytes)
+Event: 42.914 Thread 0x0000000018008000 nmethod 1266 0x0000000002dbcc10 code [0x0000000002dbcd60, 0x0000000002dbce70]
+Event: 42.920 Thread 0x0000000018008000 1267       3       java.io.BufferedWriter::ensureOpen (18 bytes)
+Event: 42.921 Thread 0x0000000018008000 nmethod 1267 0x0000000002dbc790 code [0x0000000002dbc900, 0x0000000002dbcb48]
+Event: 42.921 Thread 0x0000000018008000 1268       3       java.nio.CharBuffer::hasArray (20 bytes)
+Event: 42.922 Thread 0x0000000018008000 nmethod 1268 0x0000000002dbc3d0 code [0x0000000002dbc520, 0x0000000002dbc710]
+Event: 42.922 Thread 0x0000000018008000 1269       3       java.nio.ByteBuffer::hasArray (20 bytes)
+Event: 42.923 Thread 0x0000000018008000 nmethod 1269 0x0000000002dbc010 code [0x0000000002dbc160, 0x0000000002dbc350]
+Event: 42.932 Thread 0x0000000017ff9000 nmethod 1264% 0x0000000002dbfb50 code [0x0000000002dbfca0, 0x0000000002dbffd8]
+Event: 42.947 Thread 0x0000000018008000 1270       3       org.postgresql.PGProperty::get (13 bytes)
+Event: 42.948 Thread 0x0000000018008000 nmethod 1270 0x0000000002dbf6d0 code [0x0000000002dbf840, 0x0000000002dbfa68]
+Event: 42.971 Thread 0x0000000018008000 1273       1       java.nio.charset.CharsetEncoder::maxBytesPerChar (5 bytes)
+Event: 42.972 Thread 0x0000000018008000 nmethod 1273 0x0000000002dbf410 code [0x0000000002dbf560, 0x0000000002dbf670]
+Event: 42.972 Thread 0x0000000018008000 1272       3       java.net.IDN::isLabelSeparator (31 bytes)
+Event: 42.972 Thread 0x0000000018008000 nmethod 1272 0x0000000002dc2c50 code [0x0000000002dc2da0, 0x0000000002dc2ff0]
+Event: 42.972 Thread 0x0000000018008000 1271  s    3       java.lang.StringBuffer::charAt (28 bytes)
+Event: 42.974 Thread 0x0000000018008000 nmethod 1271 0x0000000002dc2550 code [0x0000000002dc26c0, 0x0000000002dc2aa8]
+Event: 42.974 Thread 0x0000000018008000 1275       3       sun.security.ssl.SSLAlgorithmDecomposer::decomposes (247 bytes)
+Event: 42.979 Thread 0x0000000018008000 nmethod 1275 0x0000000002dc7a90 code [0x0000000002dc7e20, 0x0000000002dca0f8]
+Event: 42.979 Thread 0x0000000018008000 1276       3       sun.security.ssl.HandshakeOutStream::checkOverflow (42 bytes)
+Event: 42.981 Thread 0x0000000018008000 nmethod 1276 0x0000000002dc1450 code [0x0000000002dc1660, 0x0000000002dc20b8]
+Event: 42.981 Thread 0x0000000018008000 1274       1       java.security.AlgorithmParameters::getAlgorithm (5 bytes)
+Event: 42.981 Thread 0x0000000018008000 nmethod 1274 0x0000000002dc1190 code [0x0000000002dc12e0, 0x0000000002dc13f0]
+Event: 43.003 Thread 0x0000000018008000 1277       3       sun.security.util.ObjectIdentifier::hashCode (8 bytes)
+Event: 43.004 Thread 0x0000000018008000 nmethod 1277 0x0000000002dc0e10 code [0x0000000002dc0f80, 0x0000000002dc1108]
+Event: 43.004 Thread 0x0000000018008000 1278       1       sun.security.x509.X509AttributeName::getPrefix (5 bytes)
+Event: 43.004 Thread 0x0000000018008000 nmethod 1278 0x0000000002dc0b50 code [0x0000000002dc0ca0, 0x0000000002dc0db0]
+Event: 43.004 Thread 0x0000000018008000 1279       1       sun.security.x509.X509AttributeName::getSuffix (5 bytes)
+Event: 43.004 Thread 0x0000000018008000 nmethod 1279 0x0000000002dc0890 code [0x0000000002dc09e0, 0x0000000002dc0af0]
+Event: 43.008 Thread 0x0000000018008000 1280       3       java.math.BigInteger::primitiveLeftShift (79 bytes)
+Event: 43.009 Thread 0x0000000018008000 nmethod 1280 0x0000000002dc0210 code [0x0000000002dc0380, 0x0000000002dc0690]
+Event: 43.011 Thread 0x0000000018008000 1281       3       sun.security.ec.point.ProjectivePoint::<init> (20 bytes)
+Event: 43.012 Thread 0x0000000018008000 nmethod 1281 0x0000000002dcab50 code [0x0000000002dcaca0, 0x0000000002dcae90]
+Event: 43.017 Thread 0x0000000018008000 1282       3       java.math.BigInteger::bitLength (140 bytes)
+Event: 43.018 Thread 0x0000000017ff9000 1283       4       java.util.HashMap::resize (359 bytes)
+Event: 43.020 Thread 0x0000000018008000 nmethod 1282 0x0000000002dcaf50 code [0x0000000002dcb100, 0x0000000002dcb698]
+Event: 43.020 Thread 0x0000000018008000 1284       3       java.io.ByteArrayOutputStream::<init> (7 bytes)
+Event: 43.021 Thread 0x0000000018008000 nmethod 1284 0x0000000002dcb950 code [0x0000000002dcbac0, 0x0000000002dcbc48]
+Event: 43.023 Thread 0x0000000018008000 1285       1       sun.security.util.math.intpoly.IntegerPolynomial$Element::getField (5 bytes)
+Event: 43.023 Thread 0x0000000018008000 nmethod 1285 0x0000000002dcbcd0 code [0x0000000002dcbe20, 0x0000000002dcbf30]
+Event: 43.041 Thread 0x0000000018008000 1286       3       sun.security.provider.ByteArrayAccess::i2bBig4 (111 bytes)
+Event: 43.042 Thread 0x0000000018008000 nmethod 1286 0x0000000002dcbf90 code [0x0000000002dcc100, 0x0000000002dcc428]
+Event: 43.043 Thread 0x0000000018008000 1287       1       java.util.LinkedList::size (5 bytes)
+Event: 43.043 Thread 0x0000000018008000 nmethod 1287 0x0000000002dcc590 code [0x0000000002dcc6e0, 0x0000000002dcc7f0]
+Event: 43.044 Thread 0x0000000018008000 1288       1       java.util.concurrent.locks.AbstractOwnableSynchronizer::getExclusiveOwnerThread (5 bytes)
+Event: 43.044 Thread 0x0000000018008000 nmethod 1288 0x0000000002dcc850 code [0x0000000002dcc9a0, 0x0000000002dccab0]
+Event: 43.058 Thread 0x0000000017ff9000 nmethod 1283 0x0000000002dcdcd0 code [0x0000000002dcde60, 0x0000000002dce3f8]
+Event: 43.071 Thread 0x0000000018008000 1289   !   3       java.lang.StringCoding::encode (120 bytes)
+Event: 43.071 Thread 0x0000000017fa9000 1291 %     4       sun.security.provider.SHA5::implCompress0 @ 3 (322 bytes)
+Event: 43.075 Thread 0x0000000018008000 nmethod 1289 0x0000000002dce710 code [0x0000000002dcea60, 0x0000000002dd04f8]
+Event: 43.075 Thread 0x0000000018008000 1290   !   3       java.lang.StringCoding$StringEncoder::encode (179 bytes)
+Event: 43.078 Thread 0x0000000018008000 nmethod 1290 0x0000000002dd1410 code [0x0000000002dd1760, 0x0000000002dd3438]
+Event: 43.078 Thread 0x0000000018008000 1293       3       java.lang.StringCoding::access$300 (8 bytes)
+Event: 43.078 Thread 0x0000000018008000 nmethod 1293 0x0000000002dcd3d0 code [0x0000000002dcd560, 0x0000000002dcda88]
+Event: 43.078 Thread 0x0000000018008000 1292       3       sun.security.provider.ByteArrayAccess::b2lBig128 (350 bytes)
+Event: 43.079 Thread 0x0000000018008000 nmethod 1292 0x0000000002dd4550 code [0x0000000002dd47c0, 0x0000000002dd50e8]
+Event: 43.079 Thread 0x0000000018008000 1294       1       sun.security.ssl.OutputRecord::contentType (5 bytes)
+Event: 43.079 Thread 0x0000000018008000 nmethod 1294 0x0000000002dcd110 code [0x0000000002dcd260, 0x0000000002dcd370]
+Event: 43.090 Thread 0x0000000017fa9000 nmethod 1291% 0x0000000002dd8810 code [0x0000000002dd8960, 0x0000000002dd8ed8]
+Event: 43.132 Thread 0x0000000018008000 1295       3       java.lang.AbstractStringBuilder::append (40 bytes)
+Event: 43.132 Thread 0x0000000018008000 nmethod 1295 0x0000000002dd7d90 code [0x0000000002dd7f40, 0x0000000002dd8588]
+Event: 43.132 Thread 0x0000000018008000 1296       3       org.postgresql.core.PGStream::receiveInteger4 (76 bytes)
+Event: 43.133 Thread 0x0000000018008000 nmethod 1296 0x0000000002dd7590 code [0x0000000002dd7720, 0x0000000002dd7b58]
+Event: 43.133 Thread 0x0000000018008000 1297       3       java.util.TreeMap::rotateLeft (96 bytes)
+Event: 43.133 Thread 0x0000000018008000 nmethod 1297 0x0000000002dccb10 code [0x0000000002dccc80, 0x0000000002dccfd0]
+Event: 43.155 Thread 0x0000000017ff9000 1298 %     4       com.sun.crypto.provider.GHASH::blockMult @ 23 (245 bytes)
+Event: 43.165 Thread 0x0000000017ff9000 nmethod 1298% 0x0000000002dd5890 code [0x0000000002dd59e0, 0x0000000002dd5f58]
+Event: 43.173 Thread 0x0000000018008000 1299       3       java.util.HashMap::<init> (98 bytes)
+Event: 43.175 Thread 0x0000000018008000 nmethod 1299 0x0000000002ddaf10 code [0x0000000002ddb1c0, 0x0000000002ddc4d8]
+Event: 44.679 Thread 0x0000000018008000 1300       3       java.net.IDN::isNonLDHAsciiCodePoint (65 bytes)
+Event: 44.680 Thread 0x0000000017fa9000 1301       4       java.util.ArrayList::add (29 bytes)
+Event: 44.680 Thread 0x0000000018008000 nmethod 1300 0x0000000002dd7010 code [0x0000000002dd7180, 0x0000000002dd7510]
+Event: 44.681 Thread 0x0000000018008000 1302       3       java.util.EnumSet::of (16 bytes)
+Event: 44.683 Thread 0x0000000018008000 nmethod 1302 0x0000000002dd6810 code [0x0000000002dd69a0, 0x0000000002dd6e68]
+Event: 44.695 Thread 0x0000000017fa9000 nmethod 1301 0x0000000002dd6090 code [0x0000000002dd61e0, 0x0000000002dd6518]
+Event: 44.711 Thread 0x0000000018008000 1303       3       java.util.ArrayList::isEmpty (13 bytes)
+Event: 44.711 Thread 0x0000000018008000 nmethod 1303 0x0000000002dde4d0 code [0x0000000002dde620, 0x0000000002dde7d0]
+Event: 44.716 Thread 0x0000000018008000 1304       1       java.net.AbstractPlainSocketImpl::getTimeout (5 bytes)
+Event: 44.717 Thread 0x0000000018008000 nmethod 1304 0x0000000002dde210 code [0x0000000002dde360, 0x0000000002dde470]
+Event: 44.718 Thread 0x0000000018008000 1305       3       java.math.BigInteger::montReduce (99 bytes)
+Event: 44.720 Thread 0x0000000018008000 nmethod 1305 0x0000000002ddd6d0 code [0x0000000002ddd8a0, 0x0000000002ddde78]
+Event: 44.720 Thread 0x0000000018008000 1306       3       java.math.BigInteger::implSquareToLen (154 bytes)
+Event: 44.722 Thread 0x0000000018008000 nmethod 1306 0x0000000002dda1d0 code [0x0000000002dda3a0, 0x0000000002dda938]
+Event: 44.723 Thread 0x0000000018008000 1307       3       java.math.BigInteger::longValue (32 bytes)
+Event: 44.724 Thread 0x0000000018008000 nmethod 1307 0x0000000002ddd1d0 code [0x0000000002ddd340, 0x0000000002ddd5c8]
+Event: 44.724 Thread 0x0000000018008000 1308       3       sun.security.util.math.intpoly.IntegerPolynomial::carryOut (22 bytes)
+Event: 44.725 Thread 0x0000000018008000 nmethod 1308 0x0000000002dd9c90 code [0x0000000002dd9e00, 0x0000000002dda090]
+Event: 44.725 Thread 0x0000000018008000 1309       3       sun.security.util.math.intpoly.IntegerPolynomial::carryValue (17 bytes)
+Event: 44.725 Thread 0x0000000018008000 nmethod 1309 0x0000000002ddce10 code [0x0000000002ddcf60, 0x0000000002ddd0d0]
+Event: 44.728 Thread 0x0000000018008000 1311       3       java.io.ByteArrayInputStream::<init> (26 bytes)
+Event: 44.729 Thread 0x0000000018008000 nmethod 1311 0x0000000002dd97d0 code [0x0000000002dd9940, 0x0000000002dd9b90]
+Event: 44.729 Thread 0x0000000018008000 1310       3       sun.security.util.ArrayUtil::swap (15 bytes)
+Event: 44.730 Thread 0x0000000018008000 nmethod 1310 0x0000000002dd93d0 code [0x0000000002dd9520, 0x0000000002dd96b0]
+Event: 44.730 Thread 0x0000000018008000 1312       3       java.lang.reflect.Constructor::<init> (50 bytes)
+Event: 44.731 Thread 0x0000000018008000 nmethod 1312 0x0000000002dde850 code [0x0000000002dde9c0, 0x0000000002ddecd0]
+Event: 44.731 Thread 0x0000000018008000 1313       3       java.math.MutableBigInteger::clear (37 bytes)
+Event: 44.732 Thread 0x0000000018008000 nmethod 1313 0x0000000002ddee50 code [0x0000000002ddefc0, 0x0000000002ddf1f0]
+Event: 44.742 Thread 0x0000000017ff9000 1314       4       sun.security.ec.ECOperations::lookup4 (88 bytes)
+Event: 44.743 Thread 0x0000000018008000 1315       3       java.lang.reflect.Constructor::copy (72 bytes)
+Event: 44.744 Thread 0x0000000017fa9000 1317       4       sun.security.provider.SHA5::implCompress0 (322 bytes)
+Event: 44.745 Thread 0x0000000018008000 nmethod 1315 0x0000000002ddf2d0 code [0x0000000002ddf460, 0x0000000002ddf7b8]
+Event: 44.745 Thread 0x0000000018008000 1316       1       sun.security.provider.DigestBase::engineGetDigestLength (5 bytes)
+Event: 44.745 Thread 0x0000000018008000 nmethod 1316 0x0000000002ddf8d0 code [0x0000000002ddfa20, 0x0000000002ddfb30]
+Event: 44.754 Thread 0x0000000018008000 1318       3       com.sun.crypto.provider.GHASH::ghashRangeCheck (214 bytes)
+Event: 44.758 Thread 0x0000000018008000 nmethod 1318 0x0000000002ddfb90 code [0x0000000002ddff60, 0x0000000002de19d8]
+Event: 44.759 Thread 0x0000000018008000 1319       3       com.sun.crypto.provider.GHASH::processBlocks (26 bytes)
+Event: 44.760 Thread 0x0000000018008000 nmethod 1319 0x0000000002de2650 code [0x0000000002de27e0, 0x0000000002de2b88]
+Event: 44.775 Thread 0x0000000017fa9000 nmethod 1317 0x0000000002de5dd0 code [0x0000000002de5f20, 0x0000000002de6298]
+Event: 44.777 Thread 0x0000000017fa9000 1320       4       com.sun.crypto.provider.GHASH::blockMult (245 bytes)
+Event: 44.778 Thread 0x0000000018008000 1321       3       java.util.concurrent.locks.AbstractOwnableSynchronizer::setExclusiveOwnerThread (6 bytes)
+Event: 44.778 Thread 0x0000000018008000 nmethod 1321 0x0000000002de5a90 code [0x0000000002de5be0, 0x0000000002de5d50]
+Event: 44.783 Thread 0x0000000017ff9000 nmethod 1314 0x0000000002de3210 code [0x0000000002de3380, 0x0000000002de3c58]
+Event: 44.787 Thread 0x0000000017fa9000 nmethod 1320 0x0000000002de8410 code [0x0000000002de8560, 0x0000000002de8998]
+Event: 44.818 Thread 0x0000000018008000 1322  s    3       org.postgresql.core.OptimizedUTF8Encoder::charDecode (83 bytes)
+Event: 44.819 Thread 0x0000000018008000 nmethod 1322 0x0000000002de4dd0 code [0x0000000002de4f80, 0x0000000002de56b8]
+Event: 44.852 Thread 0x0000000018008000 1323       3       org.postgresql.core.PGStream::sendChar (9 bytes)
+Event: 44.852 Thread 0x0000000018008000 nmethod 1323 0x0000000002de4950 code [0x0000000002de4ac0, 0x0000000002de4ce8]
+Event: 44.852 Thread 0x0000000018008000 1324  s    3       java.io.BufferedOutputStream::write (35 bytes)
+Event: 44.853 Thread 0x0000000018008000 nmethod 1324 0x0000000002de7bd0 code [0x0000000002de7d60, 0x0000000002de8228]
+Event: 44.867 Thread 0x0000000018008000 1325       3       com.sun.crypto.provider.GHASH::update (37 bytes)
+Event: 44.868 Thread 0x0000000018008000 nmethod 1325 0x0000000002de7110 code [0x0000000002de72c0, 0x0000000002de77d8]
+Event: 44.868 Thread 0x0000000018008000 1326  s    3       java.io.ByteArrayOutputStream::toByteArray (12 bytes)
+Event: 44.868 Thread 0x0000000018008000 nmethod 1326 0x0000000002de6890 code [0x0000000002de6a20, 0x0000000002de6f48]
+Event: 44.897 Thread 0x0000000018008000 1327       3       java.nio.CharBuffer::array (35 bytes)
+Event: 44.898 Thread 0x0000000018008000 nmethod 1327 0x0000000002de8b50 code [0x0000000002de8ce0, 0x0000000002de8ff8]
+Event: 50.209 Thread 0x0000000017fa9000 1328       4       sun.nio.cs.SingleByte$Encoder::encode (32 bytes)
+Event: 50.210 Thread 0x0000000017fa9000 nmethod 1328 0x0000000002de2e50 code [0x0000000002de2fa0, 0x0000000002de30b8]
+Event: 53.298 Thread 0x0000000018008000 1329       1       java.security.spec.EllipticCurve::getField (5 bytes)
+Event: 53.298 Thread 0x0000000018008000 nmethod 1329 0x0000000002de4690 code [0x0000000002de47e0, 0x0000000002de48f0]
+Event: 53.300 Thread 0x0000000018008000 1330       1       java.security.spec.ECParameterSpec::getCurve (5 bytes)
+Event: 53.301 Thread 0x0000000018008000 nmethod 1330 0x0000000002de65d0 code [0x0000000002de6720, 0x0000000002de6830]
+Event: 53.301 Thread 0x0000000018008000 1331       3       sun.security.ssl.OutputRecord::availableDataBytes (15 bytes)
+Event: 53.302 Thread 0x0000000018008000 nmethod 1331 0x0000000002debb10 code [0x0000000002debc60, 0x0000000002debdd0]
+Event: 53.346 Thread 0x0000000017ff9000 1332       4       java.util.ArrayList$Itr::hasNext (20 bytes)
+Event: 53.346 Thread 0x0000000018008000 1333       3       java.util.LinkedList::<init> (10 bytes)
+Event: 53.347 Thread 0x0000000018008000 nmethod 1333 0x0000000002deb590 code [0x0000000002deb700, 0x0000000002deb9d0]
+Event: 53.347 Thread 0x0000000018008000 1334       3       java.util.AbstractSequentialList::<init> (5 bytes)
+Event: 53.348 Thread 0x0000000018008000 nmethod 1334 0x0000000002deb090 code [0x0000000002deb200, 0x0000000002deb470]
+Event: 53.348 Thread 0x0000000018008000 1335       3       sun.security.util.ObjectIdentifier::equals (33 bytes)
+Event: 53.349 Thread 0x0000000017ff9000 nmethod 1332 0x0000000002dbf1d0 code [0x0000000002dbf300, 0x0000000002dbf398]
+Event: 53.349 Thread 0x0000000018008000 nmethod 1335 0x0000000002decf50 code [0x0000000002ded0e0, 0x0000000002ded4e8]
+Event: 53.357 Thread 0x0000000018008000 1336       3       sun.security.ec.ECOperations::setSum (681 bytes)
+Event: 53.366 Thread 0x0000000017fa9000 1337       4       java.math.BigInteger::getInt (63 bytes)
+Event: 53.371 Thread 0x0000000018008000 nmethod 1336 0x0000000002ded5d0 code [0x0000000002dedc80, 0x0000000002df3838]
+Event: 53.371 Thread 0x0000000018008000 1338       3       java.util.AbstractCollection::isEmpty (13 bytes)
+Event: 53.372 Thread 0x0000000018008000 nmethod 1338 0x0000000002decad0 code [0x0000000002decc40, 0x0000000002decea8]
+Event: 53.373 Thread 0x0000000017fa9000 nmethod 1337 0x0000000002de9850 code [0x0000000002de99a0, 0x0000000002de9a98]
+Event: 53.380 Thread 0x0000000017ff9000 1339       4       sun.security.ec.ECOperations::setDouble (559 bytes)
+Event: 53.381 Thread 0x0000000018008000 1340       3       java.util.Arrays::fill (23 bytes)
+Event: 53.382 Thread 0x0000000018008000 nmethod 1340 0x0000000002de9410 code [0x0000000002de9580, 0x0000000002de9770]
+Event: 53.399 Thread 0x0000000018008000 1341       3       com.sun.crypto.provider.GCTR::reset (24 bytes)
+Event: 53.399 Thread 0x0000000018008000 nmethod 1341 0x0000000002dec690 code [0x0000000002dec800, 0x0000000002deca28]
+Event: 53.399 Thread 0x0000000018008000 1342  s    3       java.io.BufferedOutputStream::write (67 bytes)
+Event: 53.400 Thread 0x0000000018008000 nmethod 1342 0x0000000002dea390 code [0x0000000002dea560, 0x0000000002deadb8]
+Event: 53.442 Thread 0x0000000018008000 1343       3       com.sun.crypto.provider.GaloisCounterMode::expandToOneBlock (65 bytes)
+Event: 53.442 Thread 0x0000000018008000 nmethod 1343 0x0000000002df5ad0 code [0x0000000002df5cc0, 0x0000000002df6488]
+Event: 53.442 Thread 0x0000000018008000 1344       3       com.sun.crypto.provider.GHASH::update (9 bytes)
+Event: 53.442 Thread 0x0000000018008000 nmethod 1344 0x0000000002de9f10 code [0x0000000002dea080, 0x0000000002dea2a8]
+Event: 53.442 Thread 0x0000000018008000 1345       1       java.lang.AbstractStringBuilder::length (5 bytes)
+Event: 53.442 Thread 0x0000000018008000 nmethod 1345 0x0000000002de9150 code [0x0000000002de92a0, 0x0000000002de93b0]
+
+GC Heap History (2 events):
+Event: 25.226 GC heap before
+{Heap before GC invocations=1 (full 0):
+ PSYoungGen      total 37888K, used 32768K [0x00000000d6000000, 0x00000000d8a00000, 0x0000000100000000)
+  eden space 32768K, 100% used [0x00000000d6000000,0x00000000d8000000,0x00000000d8000000)
+  from space 5120K, 0% used [0x00000000d8500000,0x00000000d8500000,0x00000000d8a00000)
+  to   space 5120K, 0% used [0x00000000d8000000,0x00000000d8000000,0x00000000d8500000)
+ ParOldGen       total 86016K, used 0K [0x0000000082000000, 0x0000000087400000, 0x00000000d6000000)
+  object space 86016K, 0% used [0x0000000082000000,0x0000000082000000,0x0000000087400000)
+ Metaspace       used 15638K, capacity 15910K, committed 16128K, reserved 1062912K
+  class space    used 1698K, capacity 1783K, committed 1792K, reserved 1048576K
+Event: 25.235 GC heap after
+Heap after GC invocations=1 (full 0):
+ PSYoungGen      total 37888K, used 5093K [0x00000000d6000000, 0x00000000d8a00000, 0x0000000100000000)
+  eden space 32768K, 0% used [0x00000000d6000000,0x00000000d6000000,0x00000000d8000000)
+  from space 5120K, 99% used [0x00000000d8000000,0x00000000d84f94b0,0x00000000d8500000)
+  to   space 5120K, 0% used [0x00000000d8500000,0x00000000d8500000,0x00000000d8a00000)
+ ParOldGen       total 86016K, used 1862K [0x0000000082000000, 0x0000000087400000, 0x00000000d6000000)
+  object space 86016K, 2% used [0x0000000082000000,0x00000000821d1af0,0x0000000087400000)
+ Metaspace       used 15638K, capacity 15910K, committed 16128K, reserved 1062912K
+  class space    used 1698K, capacity 1783K, committed 1792K, reserved 1048576K
+}
+
+Deoptimization events (16 events):
+Event: 0.728 Thread 0x00000000028c7800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002bf3b38 method=sun.misc.MetaIndex.mayContain(Ljava/lang/String;)Z @ 38
+Event: 0.742 Thread 0x00000000028c7800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002b0f954 method=java.lang.String.indexOf([CII[CIII)I @ 3
+Event: 0.761 Thread 0x00000000028c7800 Uncommon trap: reason=range_check action=make_not_entrant pc=0x0000000002c0c560 method=sun.reflect.generics.parser.SignatureParser.current()C @ 34
+Event: 24.416 Thread 0x00000000028c7800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002c135c0 method=java.lang.AbstractStringBuilder.append(Ljava/lang/String;)Ljava/lang/AbstractStringBuilder; @ 1
+Event: 24.485 Thread 0x00000000028c7800 Uncommon trap: reason=predicate action=maybe_recompile pc=0x0000000002c022ac method=sun.net.www.ParseUtil.encodePath(Ljava/lang/String;Z)Ljava/lang/String; @ 36
+Event: 24.783 Thread 0x00000000028c7800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002cb70f0 method=java.io.WinNTFileSystem.normalize(Ljava/lang/String;)Ljava/lang/String; @ 128
+Event: 24.921 Thread 0x00000000028c7800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000002d42b4c method=sun.security.util.math.intpoly.IntegerPolynomial$MutableElement.setSum(Lsun/security/util/math/IntegerModuloP;)Lsun/security/util/math/intpoly/IntegerPolynomial$MutableE
+Event: 24.921 Thread 0x00000000028c7800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000002d42b4c method=sun.security.util.math.intpoly.IntegerPolynomial$MutableElement.setSum(Lsun/security/util/math/IntegerModuloP;)Lsun/security/util/math/intpoly/IntegerPolynomial$MutableE
+Event: 24.921 Thread 0x00000000028c7800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000002d42b4c method=sun.security.util.math.intpoly.IntegerPolynomial$MutableElement.setSum(Lsun/security/util/math/IntegerModuloP;)Lsun/security/util/math/intpoly/IntegerPolynomial$MutableE
+Event: 24.921 Thread 0x00000000028c7800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000000002d42b4c method=sun.security.util.math.intpoly.IntegerPolynomial$MutableElement.setSum(Lsun/security/util/math/IntegerModuloP;)Lsun/security/util/math/intpoly/IntegerPolynomial$MutableE
+Event: 24.937 Thread 0x00000000028c7800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002bccac8 method=java.lang.String.startsWith(Ljava/lang/String;I)Z @ 25
+Event: 24.937 Thread 0x00000000028c7800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002ade0d4 method=java.lang.String.startsWith(Ljava/lang/String;I)Z @ 25
+Event: 25.100 Thread 0x00000000028c7800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002c8b090 method=java.lang.String$CaseInsensitiveComparator.compare(Ljava/lang/String;Ljava/lang/String;)I @ 70
+Event: 25.124 Thread 0x00000000028c7800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002c5cbbc method=java.lang.CharacterDataLatin1.isWhitespace(I)Z @ 14
+Event: 25.245 Thread 0x00000000028c7800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000002d04fc0 method=java.util.regex.Matcher.reset()Ljava/util/regex/Matcher; @ 47
+Event: 31.838 Thread 0x00000000028c7800 Uncommon trap: reason=predicate action=maybe_recompile pc=0x0000000002d51bcc method=java.util.regex.Pattern$SliceI.match(Ljava/util/regex/Matcher;ILjava/lang/CharSequence;)Z @ 21
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (20 events):
+Event: 0.042 Thread 0x00000000028c7800 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.defineClass(Ljava/lang/String;[BII)Ljava/lang/Class; name or signature does not match> (0x00000000d6007cc0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.
+Event: 0.042 Thread 0x00000000028c7800 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.prefetchRead(Ljava/lang/Object;J)V name or signature does not match> (0x00000000d6007fa8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 4014]
+Event: 0.163 Thread 0x00000000028c7800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d6166370) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1509]
+Event: 0.163 Thread 0x00000000028c7800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d6166768) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1509]
+Event: 0.166 Thread 0x00000000028c7800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d616aca0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1509]
+Event: 0.166 Thread 0x00000000028c7800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d616b098) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1509]
+Event: 0.167 Thread 0x00000000028c7800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d616c9f8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1509]
+Event: 0.167 Thread 0x00000000028c7800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d616cdf0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jvm.cpp, line 1509]
+Event: 0.415 Thread 0x00000000028c7800 Exception <a 'java/lang/NoSuchFieldError': method resolution failed> (0x00000000d67c3450) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\methodHandles.cpp, line 1167]
+Event: 0.418 Thread 0x00000000028c7800 Exception <a 'java/lang/NoSuchFieldError': method resolution failed> (0x00000000d67d0b40) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\methodHandles.cpp, line 1167]
+Event: 0.761 Thread 0x00000000028c7800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException': 71> (0x00000000d73fed98) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\interpreter\interpreterRuntime.cpp, line 371]
+Event: 0.762 Thread 0x00000000028c7800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException': 18> (0x00000000d73ffb10) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\interpreter\interpreterRuntime.cpp, line 371]
+Event: 0.762 Thread 0x00000000028c7800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException': 60> (0x00000000d7400ac8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\interpreter\interpreterRuntime.cpp, line 371]
+Event: 24.918 Thread 0x00000000028c7800 Exception <a 'java/io/FileNotFoundException'> (0x00000000d7c06618) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 31.871 Thread 0x00000000028c7800 Exception <a 'java/io/FileNotFoundException'> (0x00000000d609ed40) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 42.495 Thread 0x00000000028c7800 Exception <a 'java/io/FileNotFoundException'> (0x00000000d623d668) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 42.772 Thread 0x00000000028c7800 Exception <a 'java/io/FileNotFoundException'> (0x00000000d62e51f8) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 43.019 Thread 0x00000000028c7800 Exception <a 'java/io/FileNotFoundException'> (0x00000000d638de88) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 44.730 Thread 0x00000000028c7800 Exception <a 'java/io/FileNotFoundException'> (0x00000000d64346f0) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 53.368 Thread 0x00000000028c7800 Exception <a 'java/io/FileNotFoundException'> (0x00000000d64dce20) thrown at [D:\a\1\s\lookaside\java-1.8.0-openjdk\hotspot\src\share\vm\prims\jni.cpp, line 710]
+
+Events (250 events):
+Event: 25.075 loading class org/postgresql/util/LruCache
+Event: 25.075 loading class org/postgresql/util/LruCache done
+Event: 25.075 loading class org/postgresql/util/Gettable
+Event: 25.075 loading class org/postgresql/util/Gettable done
+Event: 25.076 loading class org/postgresql/util/LruCache$1
+Event: 25.076 loading class org/postgresql/util/LruCache$1 done
+Event: 25.076 loading class org/postgresql/util/LruCache$2
+Event: 25.076 loading class org/postgresql/util/LruCache$2 done
+Event: 25.077 loading class org/postgresql/core/QueryExecutorBase$1
+Event: 25.077 loading class org/postgresql/core/QueryExecutorBase$1 done
+Event: 25.077 loading class org/postgresql/util/LruCache$LimitedMap
+Event: 25.077 loading class org/postgresql/util/LruCache$LimitedMap done
+Event: 25.078 loading class org/postgresql/core/BaseQueryKey
+Event: 25.078 loading class org/postgresql/core/BaseQueryKey done
+Event: 25.078 loading class org/postgresql/core/Parser
+Event: 25.078 loading class org/postgresql/core/Parser done
+Event: 25.080 loading class org/postgresql/core/Parser$SqlParseState
+Event: 25.080 loading class org/postgresql/core/Parser$SqlParseState done
+Event: 25.081 loading class org/postgresql/core/Parser$1
+Event: 25.081 loading class org/postgresql/core/Parser$1 done
+Event: 25.082 loading class org/postgresql/core/CallableQueryKey
+Event: 25.082 loading class org/postgresql/core/CallableQueryKey done
+Event: 25.083 loading class org/postgresql/core/QueryWithReturningColumnsKey
+Event: 25.083 loading class org/postgresql/core/QueryWithReturningColumnsKey done
+Event: 25.084 loading class org/postgresql/core/SqlCommandType
+Event: 25.084 loading class org/postgresql/core/SqlCommandType done
+Event: 25.084 loading class org/postgresql/core/NativeQuery
+Event: 25.084 loading class org/postgresql/core/NativeQuery done
+Event: 25.091 loading class org/postgresql/core/SqlCommand
+Event: 25.091 loading class org/postgresql/core/SqlCommand done
+Event: 25.091 loading class org/postgresql/core/v3/SimpleQuery
+Event: 25.091 loading class org/postgresql/core/v3/SimpleQuery done
+Event: 25.093 loading class org/postgresql/core/v3/SimpleParameterList
+Event: 25.093 loading class org/postgresql/core/v3/SimpleParameterList done
+Event: 25.095 loading class org/postgresql/core/CachedQuery
+Event: 25.095 loading class org/postgresql/core/CachedQuery done
+Event: 25.096 loading class org/postgresql/core/CommandCompleteParser
+Event: 25.096 loading class org/postgresql/core/CommandCompleteParser done
+Event: 25.097 loading class java/util/concurrent/atomic/AtomicBoolean
+Event: 25.097 loading class java/util/concurrent/atomic/AtomicBoolean done
+Event: 25.097 loading class org/postgresql/core/v3/replication/V3ReplicationProtocol
+Event: 25.097 loading class org/postgresql/core/v3/replication/V3ReplicationProtocol done
+Event: 25.099 loading class org/postgresql/replication/PGReplicationStream
+Event: 25.099 loading class org/postgresql/replication/PGReplicationStream done
+Event: 25.099 loading class org/postgresql/replication/fluent/CommonOptions
+Event: 25.099 loading class org/postgresql/replication/fluent/CommonOptions done
+Event: 25.100 Thread 0x00000000028c7800 Uncommon trap: trap_request=0xffffff65 fr.pc=0x0000000002c8b090
+Event: 25.100 Thread 0x00000000028c7800 DEOPT PACKING pc=0x0000000002c8b090 sp=0x00000000027dedc0
+Event: 25.101 Thread 0x00000000028c7800 DEOPT UNPACKING pc=0x00000000029c557b sp=0x00000000027ded48 mode 2
+Event: 25.101 loading class org/postgresql/jdbc/TimestampUtils
+Event: 25.101 loading class org/postgresql/jdbc/TimestampUtils done
+Event: 25.103 loading class java/time/temporal/TemporalAmount
+Event: 25.104 loading class java/time/temporal/TemporalAmount done
+Event: 25.104 loading class java/time/temporal/TemporalField
+Event: 25.104 loading class java/time/temporal/TemporalField done
+Event: 25.104 loading class java/time/chrono/ChronoLocalDate
+Event: 25.104 loading class java/time/temporal/Temporal
+Event: 25.104 loading class java/time/temporal/TemporalAccessor
+Event: 25.105 loading class java/time/temporal/TemporalAccessor done
+Event: 25.105 loading class java/time/temporal/Temporal done
+Event: 25.105 loading class java/time/temporal/TemporalAdjuster
+Event: 25.105 loading class java/time/temporal/TemporalAdjuster done
+Event: 25.105 loading class java/time/chrono/ChronoLocalDate done
+Event: 25.105 loading class java/sql/Time
+Event: 25.106 loading class java/sql/Time done
+Event: 25.106 loading class java/sql/Date
+Event: 25.106 loading class java/sql/Date done
+Event: 25.106 loading class java/time/chrono/ChronoLocalDateTime
+Event: 25.106 loading class java/time/chrono/ChronoLocalDateTime done
+Event: 25.106 loading class java/time/format/DateTimeParseException
+Event: 25.106 loading class java/time/DateTimeException
+Event: 25.106 loading class java/time/DateTimeException done
+Event: 25.106 loading class java/time/format/DateTimeParseException done
+Event: 25.107 loading class java/util/SimpleTimeZone
+Event: 25.107 loading class java/util/SimpleTimeZone done
+Event: 25.107 loading class java/time/ZoneId
+Event: 25.108 loading class java/time/ZoneId done
+Event: 25.108 loading class java/time/ZoneOffset
+Event: 25.108 loading class java/time/ZoneOffset done
+Event: 25.109 loading class java/time/Duration
+Event: 25.109 loading class java/time/Duration done
+Event: 25.109 loading class java/util/regex/Pattern$SingleI
+Event: 25.109 loading class java/util/regex/Pattern$SingleI done
+Event: 25.110 loading class java/util/regex/Pattern$3
+Event: 25.110 loading class java/util/regex/Pattern$3 done
+Event: 25.110 loading class java/time/LocalTime
+Event: 25.110 loading class java/time/LocalTime done
+Event: 25.111 loading class java/time/temporal/ChronoUnit
+Event: 25.111 loading class java/time/temporal/TemporalUnit
+Event: 25.111 loading class java/time/temporal/TemporalUnit done
+Event: 25.111 loading class java/time/temporal/ChronoUnit done
+Event: 25.111 loading class java/time/LocalTime$1
+Event: 25.111 loading class java/time/LocalTime$1 done
+Event: 25.111 loading class java/time/temporal/ChronoField
+Event: 25.111 loading class java/time/temporal/ChronoField done
+Event: 25.112 loading class java/time/temporal/ValueRange
+Event: 25.112 loading class java/time/temporal/ValueRange done
+Event: 25.112 loading class java/time/OffsetDateTime
+Event: 25.113 loading class java/time/OffsetDateTime done
+Event: 25.113 loading class java/time/LocalDateTime
+Event: 25.113 loading class java/time/LocalDateTime done
+Event: 25.114 loading class java/time/LocalDate
+Event: 25.114 loading class java/time/LocalDate done
+Event: 25.115 loading class java/time/LocalDateTime$1
+Event: 25.115 loading class java/time/LocalDateTime$1 done
+Event: 25.115 loading class java/time/Period
+Event: 25.116 loading class java/time/chrono/ChronoPeriod
+Event: 25.116 loading class java/time/chrono/ChronoPeriod done
+Event: 25.116 loading class java/time/Period done
+Event: 25.116 loading class java/time/chrono/IsoEra
+Event: 25.116 loading class java/time/chrono/Era
+Event: 25.116 loading class java/time/chrono/Era done
+Event: 25.116 loading class java/time/chrono/IsoEra done
+Event: 25.117 loading class java/time/LocalDate$1
+Event: 25.117 loading class java/time/LocalDate$1 done
+Event: 25.118 loading class org/postgresql/core/TransactionState
+Event: 25.118 loading class org/postgresql/core/TransactionState done
+Event: 25.120 loading class org/postgresql/hostchooser/GlobalHostStatusTracker
+Event: 25.120 loading class org/postgresql/hostchooser/GlobalHostStatusTracker done
+Event: 25.120 loading class org/postgresql/hostchooser/GlobalHostStatusTracker$HostSpecStatus
+Event: 25.120 loading class org/postgresql/hostchooser/GlobalHostStatusTracker$HostSpecStatus done
+Event: 25.123 loading class org/postgresql/core/SetupQueryRunner
+Event: 25.123 loading class org/postgresql/core/SetupQueryRunner done
+Event: 25.124 Thread 0x00000000028c7800 Uncommon trap: trap_request=0xffffff65 fr.pc=0x0000000002c5cbbc
+Event: 25.124 Thread 0x00000000028c7800 DEOPT PACKING pc=0x0000000002c5cbbc sp=0x00000000027dedc0
+Event: 25.124 Thread 0x00000000028c7800 DEOPT UNPACKING pc=0x00000000029c557b sp=0x00000000027ded38 mode 2
+Event: 25.124 loading class org/postgresql/core/SetupQueryRunner$SimpleResultHandler
+Event: 25.124 loading class org/postgresql/core/SetupQueryRunner$SimpleResultHandler done
+Event: 25.125 loading class org/postgresql/core/ResultHandlerBase
+Event: 25.125 loading class org/postgresql/core/ResultHandlerBase done
+Event: 25.126 loading class org/postgresql/core/v3/QueryExecutorImpl$4
+Event: 25.126 loading class org/postgresql/core/v3/QueryExecutorImpl$4 done
+Event: 25.127 loading class org/postgresql/core/v3/ExecuteRequest
+Event: 25.127 loading class org/postgresql/core/v3/ExecuteRequest done
+Event: 25.184 loading class org/postgresql/jdbc/PgConnection$1
+Event: 25.184 loading class org/postgresql/jdbc/PgConnection$1 done
+Event: 25.185 loading class org/postgresql/jdbc/TypeInfoCache
+Event: 25.185 loading class org/postgresql/jdbc/TypeInfoCache done
+Event: 25.188 loading class org/postgresql/geometric/PGbox
+Event: 25.188 loading class org/postgresql/geometric/PGbox done
+Event: 25.188 loading class org/postgresql/util/PGBinaryObject
+Event: 25.188 loading class org/postgresql/util/PGBinaryObject done
+Event: 25.189 loading class org/postgresql/util/PGobject
+Event: 25.189 loading class org/postgresql/util/PGobject done
+Event: 25.189 loading class org/postgresql/geometric/PGcircle
+Event: 25.189 loading class org/postgresql/geometric/PGcircle done
+Event: 25.190 loading class org/postgresql/geometric/PGline
+Event: 25.190 loading class org/postgresql/geometric/PGline done
+Event: 25.190 loading class org/postgresql/geometric/PGlseg
+Event: 25.190 loading class org/postgresql/geometric/PGlseg done
+Event: 25.191 loading class org/postgresql/geometric/PGpath
+Event: 25.191 loading class org/postgresql/geometric/PGpath done
+Event: 25.191 loading class org/postgresql/geometric/PGpoint
+Event: 25.191 loading class org/postgresql/geometric/PGpoint done
+Event: 25.192 loading class org/postgresql/geometric/PGpolygon
+Event: 25.192 loading class org/postgresql/geometric/PGpolygon done
+Event: 25.192 loading class org/postgresql/util/PGmoney
+Event: 25.192 loading class org/postgresql/util/PGmoney done
+Event: 25.193 loading class org/postgresql/util/PGInterval
+Event: 25.193 loading class org/postgresql/util/PGInterval done
+Event: 25.194 loading class org/postgresql/jdbc/PgPreparedStatement
+Event: 25.194 loading class org/postgresql/jdbc/PgPreparedStatement done
+Event: 25.196 loading class org/postgresql/jdbc/PgStatement
+Event: 25.196 loading class org/postgresql/jdbc/PgStatement done
+Event: 25.197 loading class org/postgresql/core/BaseStatement
+Event: 25.197 loading class org/postgresql/core/BaseStatement done
+Event: 25.197 loading class org/postgresql/PGStatement
+Event: 25.197 loading class org/postgresql/PGStatement done
+Event: 25.200 loading class java/sql/ResultSet
+Event: 25.200 loading class java/sql/ResultSet done
+Event: 25.200 loading class java/util/TimerTask
+Event: 25.200 loading class java/util/TimerTask done
+Event: 25.200 loading class org/postgresql/jdbc/PgStatement$1
+Event: 25.200 loading class org/postgresql/jdbc/PgStatement$1 done
+Event: 25.202 loading class org/postgresql/util/ReaderInputStream
+Event: 25.202 loading class org/postgresql/util/ReaderInputStream done
+Event: 25.203 loading class java/sql/ParameterMetaData
+Event: 25.203 loading class java/sql/ParameterMetaData done
+Event: 25.204 loading class org/postgresql/jdbc/StatementCancelState
+Event: 25.204 loading class org/postgresql/jdbc/StatementCancelState done
+Event: 25.204 loading class org/postgresql/jdbc/PSQLWarningWrapper
+Event: 25.204 loading class org/postgresql/jdbc/PSQLWarningWrapper done
+Event: 25.205 loading class org/postgresql/jdbc/ResultWrapper
+Event: 25.205 loading class org/postgresql/jdbc/ResultWrapper done
+Event: 25.206 loading class org/postgresql/jdbc/PgStatement$StatementResultHandler
+Event: 25.206 loading class org/postgresql/jdbc/PgStatement$StatementResultHandler done
+Event: 25.206 loading class org/postgresql/util/StreamWrapper
+Event: 25.206 loading class org/postgresql/util/StreamWrapper done
+Event: 25.207 loading class org/postgresql/util/ByteStreamWriter
+Event: 25.207 loading class org/postgresql/util/ByteStreamWriter done
+Event: 25.225 loading class org/postgresql/core/Field
+Event: 25.225 loading class org/postgresql/core/Field done
+Event: 25.225 loading class org/postgresql/core/Tuple
+Event: 25.225 loading class org/postgresql/core/Tuple done
+Event: 25.226 loading class org/postgresql/jdbc/PgResultSet
+Event: 25.226 loading class org/postgresql/jdbc/PgResultSet done
+Event: 25.226 Executing VM operation: ParallelGCFailedAllocation
+Event: 25.235 Executing VM operation: ParallelGCFailedAllocation done
+Event: 25.236 Executing VM operation: RevokeBias
+Event: 25.237 Executing VM operation: RevokeBias done
+Event: 25.237 loading class org/postgresql/PGRefCursorResultSet
+Event: 25.237 loading class org/postgresql/PGRefCursorResultSet done
+Event: 25.237 Executing VM operation: RevokeBias
+Event: 25.237 Executing VM operation: RevokeBias done
+Event: 25.239 Executing VM operation: RevokeBias
+Event: 25.239 Executing VM operation: RevokeBias done
+Event: 25.240 Executing VM operation: RevokeBias
+Event: 25.240 Executing VM operation: RevokeBias done
+Event: 25.240 Executing VM operation: RevokeBias
+Event: 25.240 Executing VM operation: RevokeBias done
+Event: 25.240 loading class sun/security/ssl/SecureKey
+Event: 25.240 loading class org/postgresql/jdbc/PgResultSet$1
+Event: 25.240 loading class org/postgresql/jdbc/PgResultSet$1 done
+Event: 25.240 loading class sun/security/ssl/SecureKey done
+Event: 25.240 loading class java/util/Collections$EmptyEnumeration
+Event: 25.240 loading class java/util/Collections$EmptyEnumeration done
+Event: 25.240 Executing VM operation: RevokeBias
+Event: 25.240 Executing VM operation: RevokeBias done
+Event: 25.240 Executing VM operation: RevokeBias
+Event: 25.240 Executing VM operation: RevokeBias done
+Event: 25.240 Executing VM operation: RevokeBias
+Event: 25.241 Executing VM operation: RevokeBias done
+Event: 25.241 Executing VM operation: Deoptimize
+Event: 25.241 Executing VM operation: Deoptimize done
+Event: 25.242 loading class java/io/CharArrayReader
+Event: 25.243 loading class java/io/CharArrayReader done
+Event: 25.243 loading class java/sql/ResultSetMetaData
+Event: 25.243 loading class java/sql/ResultSetMetaData done
+Event: 25.245 Thread 0x00000000028c7800 Uncommon trap: trap_request=0xffffff65 fr.pc=0x0000000002d04fc0
+Event: 25.245 Thread 0x00000000028c7800 DEOPT PACKING pc=0x0000000002d04fc0 sp=0x00000000027df3a0
+Event: 25.245 Thread 0x00000000028c7800 DEOPT UNPACKING pc=0x00000000029c557b sp=0x00000000027df358 mode 2
+Event: 31.791 loading class com/revature/models/Admin
+Event: 31.791 loading class com/revature/models/Admin done
+Event: 31.838 Thread 0x00000000028c7800 Uncommon trap: trap_request=0xffffff86 fr.pc=0x0000000002d51bcc
+Event: 31.838 Thread 0x00000000028c7800 DEOPT PACKING pc=0x0000000002d51bcc sp=0x00000000027de5c0
+Event: 31.838 Thread 0x00000000028c7800 DEOPT UNPACKING pc=0x00000000029c557b sp=0x00000000027de560 mode 2
+Event: 31.873 Thread 0x00000000028c7800 DEOPT PACKING pc=0x0000000002d3e75c sp=0x00000000027de4c0
+Event: 31.873 Thread 0x00000000028c7800 DEOPT UNPACKING pc=0x00000000029c75d0 sp=0x00000000027de160 mode 0
+Event: 31.874 Thread 0x00000000028c7800 DEOPT PACKING pc=0x0000000002d3e75c sp=0x00000000027de550
+Event: 31.875 Thread 0x00000000028c7800 DEOPT UNPACKING pc=0x00000000029c75d0 sp=0x00000000027de1f0 mode 0
+Event: 31.876 Thread 0x00000000028c7800 DEOPT PACKING pc=0x0000000002d3e75c sp=0x00000000027de580
+Event: 31.876 Thread 0x00000000028c7800 DEOPT UNPACKING pc=0x00000000029c75d0 sp=0x00000000027de220 mode 0
+Event: 31.876 Thread 0x00000000028c7800 DEOPT PACKING pc=0x0000000002d3e75c sp=0x00000000027de580
+Event: 31.876 Thread 0x00000000028c7800 DEOPT UNPACKING pc=0x00000000029c75d0 sp=0x00000000027de220 mode 0
+Event: 42.914 loading class com/revature/models/Customer0
+Event: 42.914 loading class com/revature/models/Customer0 done
+Event: 44.744 Thread 0x00000000028c7800 DEOPT PACKING pc=0x0000000002d7c74f sp=0x00000000027dde80
+Event: 44.745 Thread 0x00000000028c7800 DEOPT UNPACKING pc=0x00000000029c75d0 sp=0x00000000027ddba0 mode 0
+Event: 44.777 Thread 0x00000000028c7800 DEOPT PACKING pc=0x0000000002d6e526 sp=0x00000000027de330
+Event: 44.777 Thread 0x00000000028c7800 DEOPT UNPACKING pc=0x00000000029c75d0 sp=0x00000000027ddfe8 mode 0
+
+
+Dynamic libraries:
+0x00007ff625490000 - 0x00007ff6254d9000 	C:\Users\Annabella Doncell\scoop\apps\ojdkbuild8-full\current\bin\javaw.exe
+0x00007ffc0f5f0000 - 0x00007ffc0f7e5000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007ffc0dc40000 - 0x00007ffc0dcfd000 	C:\Windows\System32\KERNEL32.DLL
+0x00007ffc0cf80000 - 0x00007ffc0d247000 	C:\Windows\System32\KERNELBASE.dll
+0x00007ffc0deb0000 - 0x00007ffc0df5a000 	C:\Windows\System32\ADVAPI32.dll
+0x00007ffc0df60000 - 0x00007ffc0dffe000 	C:\Windows\System32\msvcrt.dll
+0x00007ffc0f2b0000 - 0x00007ffc0f34b000 	C:\Windows\System32\sechost.dll
+0x00007ffc0f350000 - 0x00007ffc0f473000 	C:\Windows\System32\RPCRT4.dll
+0x00007ffc0e140000 - 0x00007ffc0e2e0000 	C:\Windows\System32\USER32.dll
+0x00007ffc0cda0000 - 0x00007ffc0cdc2000 	C:\Windows\System32\win32u.dll
+0x00007ffc0d660000 - 0x00007ffc0d68a000 	C:\Windows\System32\GDI32.dll
+0x00007ffc0d370000 - 0x00007ffc0d47a000 	C:\Windows\System32\gdi32full.dll
+0x00007ffc0d2d0000 - 0x00007ffc0d36d000 	C:\Windows\System32\msvcp_win.dll
+0x00007ffc0ce80000 - 0x00007ffc0cf80000 	C:\Windows\System32\ucrtbase.dll
+0x00007ffbecec0000 - 0x00007ffbed15a000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.1_none_b555e41d4684ddec\COMCTL32.dll
+0x00007ffc0db80000 - 0x00007ffc0dbb0000 	C:\Windows\System32\IMM32.DLL
+0x0000000072490000 - 0x0000000072562000 	C:\Users\Annabella Doncell\scoop\apps\ojdkbuild8-full\current\jre\bin\msvcr100.dll
+0x0000000072650000 - 0x0000000072f12000 	C:\Users\Annabella Doncell\scoop\apps\ojdkbuild8-full\current\jre\bin\server\jvm.dll
+0x00007ffc0e5e0000 - 0x00007ffc0e5e8000 	C:\Windows\System32\PSAPI.DLL
+0x00007ffbea4d0000 - 0x00007ffbea4f7000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007ffc04be0000 - 0x00007ffc04bea000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007ffbdd7f0000 - 0x00007ffbdd7f9000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x00007ffc0ed30000 - 0x00007ffc0ed9b000 	C:\Windows\System32\WS2_32.dll
+0x00007ffbdd7e0000 - 0x00007ffbdd7ef000 	C:\Users\Annabella Doncell\scoop\apps\ojdkbuild8-full\current\jre\bin\verify.dll
+0x00007ffbdd7b0000 - 0x00007ffbdd7d9000 	C:\Users\Annabella Doncell\scoop\apps\ojdkbuild8-full\current\jre\bin\java.dll
+0x00007ffbdd790000 - 0x00007ffbdd7a6000 	C:\Users\Annabella Doncell\scoop\apps\ojdkbuild8-full\current\jre\bin\zip.dll
+0x00007ffc0e5f0000 - 0x00007ffc0ed30000 	C:\Windows\System32\SHELL32.dll
+0x00007ffc0aec0000 - 0x00007ffc0b651000 	C:\Windows\SYSTEM32\windows.storage.dll
+0x00007ffc0ef50000 - 0x00007ffc0f2a3000 	C:\Windows\System32\combase.dll
+0x00007ffc0c7c0000 - 0x00007ffc0c7ec000 	C:\Windows\SYSTEM32\Wldp.dll
+0x00007ffc0de00000 - 0x00007ffc0deae000 	C:\Windows\System32\SHCORE.dll
+0x00007ffc0dd90000 - 0x00007ffc0dde5000 	C:\Windows\System32\shlwapi.dll
+0x00007ffc0cc80000 - 0x00007ffc0cc9f000 	C:\Windows\SYSTEM32\profapi.dll
+0x00007ffc06e20000 - 0x00007ffc06e2d000 	C:\Users\Annabella Doncell\scoop\apps\ojdkbuild8-full\current\jre\bin\management.dll
+0x00007ffbdd770000 - 0x00007ffbdd78a000 	C:\Users\Annabella Doncell\scoop\apps\ojdkbuild8-full\current\jre\bin\net.dll
+0x00007ffc0c540000 - 0x00007ffc0c5aa000 	C:\Windows\system32\mswsock.dll
+0x00007ffc06e00000 - 0x00007ffc06e17000 	C:\Windows\system32\napinsp.dll
+0x00007ffc06de0000 - 0x00007ffc06dfb000 	C:\Windows\system32\pnrpnsp.dll
+0x00007ffc08310000 - 0x00007ffc08325000 	C:\Windows\system32\wshbth.dll
+0x00007ffc05a20000 - 0x00007ffc05a3d000 	C:\Windows\system32\NLAapi.dll
+0x00007ffc0c1e0000 - 0x00007ffc0c21b000 	C:\Windows\SYSTEM32\IPHLPAPI.DLL
+0x00007ffc0c230000 - 0x00007ffc0c2fa000 	C:\Windows\SYSTEM32\DNSAPI.dll
+0x00007ffc0dd20000 - 0x00007ffc0dd29000 	C:\Windows\System32\NSI.dll
+0x00007ffc06dc0000 - 0x00007ffc06dd2000 	C:\Windows\System32\winrnr.dll
+0x00007ffc030f0000 - 0x00007ffc030fa000 	C:\Windows\System32\rasadhlp.dll
+0x00007ffc03130000 - 0x00007ffc031af000 	C:\Windows\System32\fwpuclnt.dll
+0x00007ffc0d2a0000 - 0x00007ffc0d2c7000 	C:\Windows\System32\bcrypt.dll
+0x00007ffbdd750000 - 0x00007ffbdd761000 	C:\Users\Annabella Doncell\scoop\apps\ojdkbuild8-full\current\jre\bin\nio.dll
+0x00007ffc06da0000 - 0x00007ffc06db5000 	C:\Users\Annabella Doncell\scoop\apps\ojdkbuild8-full\current\jre\bin\sunec.dll
+0x00007ffc0c710000 - 0x00007ffc0c728000 	C:\Windows\SYSTEM32\CRYPTSP.dll
+0x00007ffc0be60000 - 0x00007ffc0be94000 	C:\Windows\system32\rsaenh.dll
+0x00007ffc0cc40000 - 0x00007ffc0cc6e000 	C:\Windows\SYSTEM32\USERENV.dll
+0x00007ffc0d5e0000 - 0x00007ffc0d65f000 	C:\Windows\System32\bcryptprimitives.dll
+0x00007ffc0c730000 - 0x00007ffc0c73c000 	C:\Windows\SYSTEM32\CRYPTBASE.dll
+0x00007ffc03a20000 - 0x00007ffc03a37000 	C:\Windows\SYSTEM32\dhcpcsvc6.DLL
+0x00007ffc04420000 - 0x00007ffc0443d000 	C:\Windows\SYSTEM32\dhcpcsvc.DLL
+0x00007ffc06d90000 - 0x00007ffc06d9c000 	C:\Users\Annabella Doncell\scoop\apps\ojdkbuild8-full\current\jre\bin\sunmscapi.dll
+0x00007ffc0d480000 - 0x00007ffc0d5dd000 	C:\Windows\System32\CRYPT32.dll
+0x00007ffc0c830000 - 0x00007ffc0c857000 	C:\Windows\SYSTEM32\ncrypt.dll
+0x00007ffc0c7f0000 - 0x00007ffc0c82b000 	C:\Windows\SYSTEM32\NTASN1.dll
+
+VM Arguments:
+jvm_args: -Dfile.encoding=Cp1252 
+java_command: com.revature.Driver
+java_class_path (initial): C:\Users\Annabella Doncell\Documents\Work\Demos\DemoRepoExample\P0\project-0-adoncell\target\classes;C:\Users\Annabella Doncell\.m2\repository\org\apache\logging\log4j\log4j-api\2.13.3\log4j-api-2.13.3.jar;C:\Users\Annabella Doncell\.m2\repository\org\apache\logging\log4j\log4j-core\2.13.3\log4j-core-2.13.3.jar;C:\Users\Annabella Doncell\.m2\repository\org\postgresql\postgresql\42.2.14\postgresql-42.2.14.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Users\Annabella Doncell\scoop\apps\ojdkbuild8-full\current
+PATH=C:/Users/Annabella Doncell/scoop/apps/ojdkbuild8-full/current/bin/../jre/bin/server;C:/Users/Annabella Doncell/scoop/apps/ojdkbuild8-full/current/bin/../jre/bin;C:/Users/Annabella Doncell/scoop/apps/ojdkbuild8-full/current/bin/../jre/lib/amd64;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Users\Annabella Doncell\scoop\apps\maven\current\bin;C:\Users\Annabella Doncell\scoop\apps\ojdkbuild8-full\current\bin;C:\Users\Annabella Doncell\scoop\shims;C:\Users\Annabella Doncell\AppData\Local\Microsoft\WindowsApps;C:\Users\Annabella Doncell\scoop\apps\sts\current;
+USERNAME=Annabella Doncell
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 78 Stepping 3, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10.0 , 64 bit Build 19041 (10.0.19041.292)
+
+CPU:total 4 (initial active 4) (2 cores per cpu, 2 threads per core) family 6 model 78 stepping 3, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx
+
+Memory: 4k page, physical 8249976k(1245488k free), swap 20540532k(5392k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.252-b09) for windows-amd64 JRE (1.8.0_252-b09), built on Apr 22 2020 09:38:05 by "VssAdministrator" with MS VC++ 10.0 (VS2010)
+
+time: Wed Aug 19 03:22:45 2020
+timezone: Eastern Daylight Time
+elapsed time: 53 seconds (0d 0h 0m 53s)
+
